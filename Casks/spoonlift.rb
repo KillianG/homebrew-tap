@@ -17,7 +17,21 @@ cask "spoonlift" do
 
   app "Spoonlift.app"
 
+  # Spoonlift is ad-hoc signed rather than signed with an Apple Developer ID,
+  # so Homebrew's default quarantine-strip is not always enough on recent
+  # macOS — Gatekeeper will still refuse to launch the app. Force-clear every
+  # extended attribute after install so the first double-click just works.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/Spoonlift.app"],
+                   sudo: false
+  end
+
+  uninstall quit: "com.spoonlift.Spoonlift"
+
   zap trash: [
+    "~/Library/Application Support/Spoonlift",
+    "~/Library/Caches/com.spoonlift.Spoonlift",
     "~/Library/Preferences/com.spoonlift.Spoonlift.plist",
     "~/Library/Saved Application State/com.spoonlift.Spoonlift.savedState",
   ]
