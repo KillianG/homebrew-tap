@@ -1,6 +1,6 @@
 cask "spoonlift" do
-  version "0.0.5"
-  sha256 "53625ed12db7bdc8876468b1feb9d271dfc87bdea9d2692c15b73d9c6e5caaa3"
+  version "0.0.6"
+  sha256 "75c183fd1a6b8e75bc4b30a3fd61eee2d46227886178b1df3b4d10365f05e19f"
 
   url "https://github.com/KillianG/Spoonlift/releases/download/v#{version}/Spoonlift-#{version}.dmg",
       verified: "github.com/KillianG/Spoonlift/"
